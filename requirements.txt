@@ -1,0 +1,4 @@
+pip==22.2.1
+requests[socks]~=2.28.1
+fake-useragent~=0.1.11
+python-dotenv~=0.2
