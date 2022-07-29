@@ -14,10 +14,10 @@ def check_proxy(proxy):
 def is_work_proxy(current_ip, proxy):
     logger.info(f'check proxy={proxy}')
     try:
-        logger.info(f'current ip without proxy: {current_ip}')
+        logger.debug(f'current ip without proxy: {current_ip}')
 
         ext_ip = get_my_ip_with_proxy(proxy)
-        logger.info(f'current ip with proxy: {ext_ip}')
+        logger.debug(f'current ip with proxy: {ext_ip}')
 
         if current_ip == ext_ip:
             raise Exception('No proxy was used')
