@@ -5,10 +5,25 @@ from config import Logger
 
 logger = Logger.get_logger(__name__)
 
+my_ip = get_my_ip()
+logger.info(f'my ip: {my_ip}')
+
 
 def check_proxy(proxy):
     current_ip = get_my_ip()
     return is_work_proxy(current_ip, proxy)
+
+
+def check_proxy_without_request_ip(proxy):
+    return is_work_proxy(my_ip, proxy)
+
+
+def check_list_proxy(list_proxy):
+    current_ip = get_my_ip()
+    result_work = {}
+    for proxy in list_proxy:
+        result_work.setdefault(proxy, is_work_proxy(current_ip, proxy))
+    return result_work
 
 
 def is_work_proxy(current_ip, proxy):
@@ -33,4 +48,4 @@ def is_work_proxy(current_ip, proxy):
     return True
 
 
-__all__ = ['check_proxy']
+__all__ = ['check_proxy', 'check_list_proxy', 'check_proxy_without_request_ip']

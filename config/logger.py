@@ -1,5 +1,3 @@
-import logging
-
 from config import *
 
 _log_format = "%(asctime)s [%(levelname)s] %(name)s - (%(filename)s).%(funcName)s(%(lineno)d): %(message)s"
@@ -8,7 +6,7 @@ _log_format = "%(asctime)s [%(levelname)s] %(name)s - (%(filename)s).%(funcName)
 class Logger:
     @staticmethod
     def get_file_handler():
-        file_handler = logging.FileHandler(LOG_FILE)
+        file_handler = logging.FileHandler(LOG_FILE, encoding='utf-8')
         file_handler.setLevel(LOG_LEVEL_FILE)
         file_handler.setFormatter(logging.Formatter(_log_format))
         return file_handler
@@ -22,11 +20,11 @@ class Logger:
 
     @staticmethod
     def get_logger(name):
-        logger = logging.getLogger(name)
-        logger.setLevel(LOG_LEVEL_OUT)
-        logger.addHandler(Logger.get_file_handler())
-        logger.addHandler(Logger.get_stream_handler())
-        return logger
+        log_adapter = logging.getLogger(name)
+        log_adapter.setLevel(LOG_LEVEL_OUT)
+        log_adapter.addHandler(Logger.get_file_handler())
+        log_adapter.addHandler(Logger.get_stream_handler())
+        return log_adapter
 
 
-[__all__] = [Logger]
+__all__ = [Logger]
