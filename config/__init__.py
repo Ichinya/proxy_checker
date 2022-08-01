@@ -1,5 +1,6 @@
 import logging
 import os
+import random
 
 from dotenv import load_dotenv
 
@@ -14,7 +15,8 @@ LOG_FILE = str(os.getenv('LOG_FILE') or 'log_warning.log')
 # Очереди
 AMQP_URL = str(os.environ['AMQP_URL'] or os.getenv('AMQP_URL') or '')
 
-# Подключаем внутренние файлы
-from config.logger import Logger
+# Адрес для проверки ip. Используем несколько разных сайтов, чтобы уменьшить количество запросов на каждый
+list_site = ['http://icanhazip.com', 'http://ifconfig.me/ip']
+SITE_CHECK_IP = random.choice(list_site)
 
-__all__ = [Logger]
+__all__ = ['SITE_CHECK_IP', 'LOG_FILE', 'LOG_LEVEL_FILE', 'LOG_LEVEL_OUT']

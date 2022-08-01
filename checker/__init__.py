@@ -1,7 +1,7 @@
 import urllib.error
 
 from checker.my_ip import get_my_ip, get_my_ip_with_proxy
-from config import Logger
+from utils.Logger import Logger
 
 logger = Logger.get_logger(__name__)
 

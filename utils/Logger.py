@@ -1,4 +1,6 @@
-from config import *
+import logging
+
+from config import LOG_FILE, LOG_LEVEL_FILE, LOG_LEVEL_OUT
 
 _log_format = "%(asctime)s [%(levelname)s] %(name)s - (%(filename)s).%(funcName)s(%(lineno)d): %(message)s"
 
@@ -27,4 +29,4 @@ class Logger:
         return log_adapter
 
 
-__all__ = [Logger]
+__all__ = ['Logger']

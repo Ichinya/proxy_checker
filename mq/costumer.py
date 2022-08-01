@@ -4,7 +4,7 @@ import os
 import pika
 
 from checker import check_proxy_without_request_ip
-from config import Logger
+from utils.Logger import Logger
 
 logger = Logger.get_logger(__name__)
 

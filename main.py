@@ -3,14 +3,10 @@ import json
 from enum import Enum
 
 from checker import check_proxy, check_list_proxy
-from config import Logger
 from mq import run_mq
+from utils.Logger import Logger
 
 logger = Logger.get_logger(__name__)
-
-
-def main():
-    check_proxy('socks5://72.195.114.169:4145')
 
 
 class RunMod(Enum):
