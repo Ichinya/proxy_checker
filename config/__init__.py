@@ -16,7 +16,11 @@ LOG_FILE = str(os.getenv('LOG_FILE') or 'log_warning.log')
 AMQP_URL = str(os.environ['AMQP_URL'] or os.getenv('AMQP_URL') or '')
 
 # Адрес для проверки ip. Используем несколько разных сайтов, чтобы уменьшить количество запросов на каждый
-list_site = ['http://icanhazip.com', 'http://ifconfig.me/ip']
+list_site = [
+    'http://icanhazip.com',
+    'http://ifconfig.me/ip',
+    'http://azenv.net/',
+]
 SITE_CHECK_IP = random.choice(list_site)
 
 __all__ = ['SITE_CHECK_IP', 'LOG_FILE', 'LOG_LEVEL_FILE', 'LOG_LEVEL_OUT']
