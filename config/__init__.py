@@ -20,7 +20,10 @@ list_site = [
     'http://icanhazip.com',
     'http://ifconfig.me/ip',
     'http://azenv.net/',
+    'http://ip-api.com/json/?fields=8217',
 ]
 SITE_CHECK_IP = random.choice(list_site)
 
-__all__ = ['SITE_CHECK_IP', 'LOG_FILE', 'LOG_LEVEL_FILE', 'LOG_LEVEL_OUT']
+TIMEOUT = int(os.getenv('TIMEOUT') or 5)
+
+__all__ = ['SITE_CHECK_IP', 'LOG_FILE', 'LOG_LEVEL_FILE', 'LOG_LEVEL_OUT', 'TIMEOUT']
