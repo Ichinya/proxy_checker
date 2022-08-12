@@ -3,12 +3,11 @@ import json
 import re
 
 import requests
-from fake_useragent import UserAgent
+from FakeAgent import Fake_Agent
 from config import SITE_CHECK_IP, TIMEOUT
 from utils.Logger import Logger
 
-ua = UserAgent(verify_ssl=False)
-
+fa = Fake_Agent()
 
 logger = Logger.get_logger(__name__)
 
@@ -17,7 +16,7 @@ def headers():  # Socket headers send metod...
 
     return {
         "Host": "httpbin.org",
-        "User-Agent": ua.random,
+        "User-Agent": fa.random().strip(),
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
         "Accept-Language": "ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3",
         "Accept-Encoding": "gzip, deflate",

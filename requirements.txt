@@ -1,5 +1,5 @@
 pip==22.2.2
 requests[socks]~=2.28.1
-fake-useragent~=0.1.11
+fake-agent~=0.1.4
 python-dotenv~=0.2
 pika~=1.3.0

@@ -24,6 +24,6 @@ list_site = [
 ]
 SITE_CHECK_IP = random.choice(list_site)
 
-TIMEOUT = int(os.getenv('TIMEOUT') or 5)
+TIMEOUT = int(os.getenv('TIMEOUT') or 3)
 
 __all__ = ['SITE_CHECK_IP', 'LOG_FILE', 'LOG_LEVEL_FILE', 'LOG_LEVEL_OUT', 'TIMEOUT']
