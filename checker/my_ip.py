@@ -4,7 +4,7 @@ import re
 
 import requests
 from FakeAgent import Fake_Agent
-from config import SITE_CHECK_IP, TIMEOUT
+from config import site_check_ip, TIMEOUT
 from utils.Logger import Logger
 
 fa = Fake_Agent()
@@ -27,9 +27,10 @@ def headers():  # Socket headers send metod...
 
 
 def get_my_ip():
-    logger.info('Use site for check ip: ' + SITE_CHECK_IP)
+    site = site_check_ip()
+    logger.info('Use site for check ip: ' + site)
     s = requests.Session()
-    ext_ip = s.get(SITE_CHECK_IP, timeout=TIMEOUT, headers=headers())
+    ext_ip = s.get(site, timeout=TIMEOUT, headers=headers())
     return find_ip(ext_ip)
 
 
@@ -39,7 +40,7 @@ def get_my_ip_with_proxy(proxy):
         "https": proxy,
     }
     s = requests.Session()
-    ext_ip = s.get(SITE_CHECK_IP, proxies=proxies, timeout=TIMEOUT, headers=headers())
+    ext_ip = s.get(site_check_ip(), proxies=proxies, timeout=TIMEOUT, headers=headers())
     return find_ip(ext_ip)
 
 
@@ -61,7 +62,7 @@ def find_ip(text):
     except Exception as ex:
         logger.debug(str(ex))
 
-    regex = r"ADDR.*(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})"
+    regex = r"ADDR.*\s(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})"
     matches = re.findall(regex, resp)
     try:
         if ipaddress.ip_address(matches[0]):

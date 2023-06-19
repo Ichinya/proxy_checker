@@ -22,8 +22,12 @@ list_site = [
     'http://azenv.net/',
     'http://ip-api.com/json/?fields=8217',
 ]
-SITE_CHECK_IP = random.choice(list_site)
+
+
+def site_check_ip():
+    return random.choice(list_site)
+
 
 TIMEOUT = int(os.getenv('TIMEOUT') or 3)
 
-__all__ = ['SITE_CHECK_IP', 'LOG_FILE', 'LOG_LEVEL_FILE', 'LOG_LEVEL_OUT', 'TIMEOUT']
+__all__ = ['site_check_ip', 'LOG_FILE', 'LOG_LEVEL_FILE', 'LOG_LEVEL_OUT', 'TIMEOUT']

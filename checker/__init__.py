@@ -1,3 +1,4 @@
+import time
 import urllib.error
 
 from checker.my_ip import get_my_ip, get_my_ip_with_proxy
@@ -5,8 +6,17 @@ from utils.Logger import Logger
 
 logger = Logger.get_logger(__name__)
 
-my_ip = get_my_ip()
-logger.info(f'my ip: {my_ip}')
+count = 0
+while True:
+    time.sleep(count)
+    my_ip = get_my_ip()
+    logger.info(f'my ip: {my_ip}')
+    if my_ip:
+        break
+    count += 1
+    if count > 100:
+        logger.error('Ошибка определения ip адреса')
+        raise Exception('Не удалось подключиться ни к одному серверу для проверки ip адреса')
 
 
 def check_proxy(proxy):
