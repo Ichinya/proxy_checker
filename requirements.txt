@@ -1,4 +1,4 @@
-pip==23.1.2
+pip==23.3
 requests[socks]==2.31.0
 fake-agent~=0.1.4
 python-dotenv==1.0.0
